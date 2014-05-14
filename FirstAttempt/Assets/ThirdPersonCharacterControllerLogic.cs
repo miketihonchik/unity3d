@@ -50,8 +50,7 @@ public class ThirdPersonCharacterControllerLogic : MonoBehaviour {
 	
 	void FixedUpdate() {							
 		/* Rotate character model if stick is tilted right or left, but only if character is moving in that direction */
-		if (IsInLocomotion() && ((direction >= 0 && horizon >= 0) || (direction < 0 && horizon < 0)))
-		{
+		if (IsInLocomotion() && ((direction >= 0 && horizon >= 0) || (direction < 0 && horizon < 0))) {
 			Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (horizon < 0f ? -1f : 1f), 0f), Mathf.Abs(horizon));
 			Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
 			this.transform.rotation = (this.transform.rotation * deltaRotation);
